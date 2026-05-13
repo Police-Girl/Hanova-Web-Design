@@ -10,3 +10,9 @@ class InquiryViewSet(viewsets.ModelViewSet):
     serializer_class = InquirySerializer  # use our serializer to convert to JSON
 
 # Create your views here.
+from rest_framework.permissions import IsAuthenticated
+
+class InquiryViewSet(viewsets.ModelViewSet):
+    queryset = Inquiry.objects.all()
+    serializer_class = InquirySerializer
+    permission_classes = [IsAuthenticated]  # only logged in users can access

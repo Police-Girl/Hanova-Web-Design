@@ -10,3 +10,9 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     serializer_class = BlogPostSerializer  #use our serializer to convert to JSON
 
 # Create your views here.
+from rest_framework.permissions import IsAuthenticated
+
+class BlogPostViewSet(viewsets.ModelViewSet):
+    queryset = blog_posts.objects.all()
+    serializer_class = BlogPostSerializer
+    permission_classes = [IsAuthenticated]  # only logged in users can access
